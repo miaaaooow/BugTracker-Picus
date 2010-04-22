@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: fire_bird
+  name: Anna Ivanova
+  encrypted_password: MyString
+  email: anna@gmail.com
+
+two:
+  username: groovy
+  name: Ivan Ivanov
+  encrypted_password: MyString
+  email: ivan@dpc.bg
