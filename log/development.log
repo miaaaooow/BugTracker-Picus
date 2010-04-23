@@ -6,3 +6,60 @@
   [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
   [4;35;1mSQL (76.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.9ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateBugs (20100422130258)
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (297.2ms)[0m   [0;1mCREATE TABLE "bugs" ("id" serial primary key, "name" character varying(255) NOT NULL, "description" text, "priority" integer DEFAULT 1, "status_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (16.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100422130258')[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateProjects (20100422130347)
+  [4;35;1mSQL (1.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (31.6ms)[0m   [0;1mCREATE TABLE "projects" ("id" serial primary key, "name" character varying(255) NOT NULL, "description" text, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100422130347')[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateRecords (20100422135325)
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (15.7ms)[0m   [0;1mCREATE TABLE "records" ("id" serial primary key, "user_id" integer NOT NULL, "bug_id" integer NOT NULL, "change_type_id" integer DEFAULT 0 NOT NULL, "comment" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100422135325')[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateUsers (20100422151052)
+  [4;35;1mSQL (0.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (20.8ms)[0m   [0;1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255) NOT NULL, "name" character varying(255), "email" character varying(255) NOT NULL, "encrypted_password" character varying(255) NOT NULL, "salt" character varying(255), "admin" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100422151052')[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateVersions (20100422191236)
+  [4;35;1mSQL (1.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (11.4ms)[0m   [0;1mCREATE TABLE "versions" ("id" serial primary key, "name" character varying(255) NOT NULL, "user_id" integer, "project_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100422191236')[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateChangeTypes (20100422214934)
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (10.6ms)[0m   [0;1mCREATE TABLE "change_types" ("id" serial primary key, "type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+WARNING: Can't mass-assign these protected attributes: type
+  [4;35;1mSQL (14.1ms)[0m   [0mINSERT INTO "change_types" ("created_at", "updated_at", "type") VALUES('2010-04-23 10:37:46.365447', '2010-04-23 10:37:46.365447', NULL) RETURNING "id"[0m
+WARNING: Can't mass-assign these protected attributes: type
+WARNING: Can't mass-assign these protected attributes: type
+WARNING: Can't mass-assign these protected attributes: type
+WARNING: Can't mass-assign these protected attributes: type
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100422214934')[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+Migrating to BugsUsers (20100422222536)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE "bugs_users" ("bug_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100422222536')[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+Migrating to CreateStatuses (20100423094705)
+  [4;36;1mSQL (0.8ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (8.3ms)[0m   [0mCREATE TABLE "statuses" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'NEW', '2010-04-23 10:37:46.550322', '2010-04-23 10:37:46.550322') RETURNING "id"[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'OPEN', '2010-04-23 10:37:46.556130', '2010-04-23 10:37:46.556130') RETURNING "id"[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'REJECTED', '2010-04-23 10:37:46.559179', '2010-04-23 10:37:46.559179') RETURNING "id"[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'WORKS HERE', '2010-04-23 10:37:46.562291', '2010-04-23 10:37:46.562291') RETURNING "id"[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'DISASTER', '2010-04-23 10:37:46.565242', '2010-04-23 10:37:46.565242') RETURNING "id"[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'FIXED', '2010-04-23 10:37:46.568045', '2010-04-23 10:37:46.568045') RETURNING "id"[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO "statuses" ("name", "created_at", "updated_at") VALUES(E'REOPEN', '2010-04-23 10:37:46.571134', '2010-04-23 10:37:46.571134') RETURNING "id"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100423094705')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m

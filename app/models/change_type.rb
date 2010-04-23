@@ -1,4 +1,4 @@
 class ChangeType < ActiveRecord::Base
-  belongs_to :record
+  has_many :records
   validates_presence_of :type
 end

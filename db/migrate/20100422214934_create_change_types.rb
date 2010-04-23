@@ -2,6 +2,7 @@ class CreateChangeTypes < ActiveRecord::Migration
   def self.up
     create_table :change_types do |t|
       t.string :type
+    
       t.timestamps
     end
 
