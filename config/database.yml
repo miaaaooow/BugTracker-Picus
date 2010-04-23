@@ -13,7 +13,7 @@ development:
   encoding: utf8
   database: picus_development
   pool: 5
-  username: miaaaooow
+  username: miaaaooow 
   password: chiwawa
   host: localhost
   port: 5432

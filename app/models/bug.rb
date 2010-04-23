@@ -7,10 +7,15 @@ class Bug < ActiveRecord::Base
 
   validates_presence_of :name, :description, :priority, :status
   validates_uniqueness_of :name
-  validates :priority_in_range
+  validate :priority_is_in_range
+  validate :status_is_viable
 
   #change this.
   def priority_in_range
-    [1, 2, 3, 4, 5].include? :priority
+    errors.add("Priority out of range") if not[1, 2, 3, 4, 5].include? :priority
+  end
+
+  def status_is_viable
+    #test_if_status is from db
   end
 end

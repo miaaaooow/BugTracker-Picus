@@ -3,5 +3,5 @@ class Project < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :name #, :first_version_name
-  validates_uniqueness_of: :name
+  validates_uniqueness_of :name
 end
