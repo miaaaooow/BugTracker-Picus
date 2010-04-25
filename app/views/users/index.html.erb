@@ -1,0 +1,19 @@
+<h1>Users List</h1>
+... in the making
+<% form_for(:user) do |f| %>
+  
+  <% f.error_messages %>
+  <p>  
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  <p>
+  <% form_for :status do |form| %>
+    <%= form.select(:name, Status.find(:all).map { |status| status.name }) %>
+  <% end %>
+    <%= f.submit 'Register to Picus' %>
+  </p>
+<% end %>

@@ -1,0 +1,32 @@
+<h2>Register a New Bug to project 
+  <%= @project %>
+</h2>
+
+<% form_for(:bug) do |f| %>
+  
+  <% f.error_messages %>
+  <p>  
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description, :rows => 5 %>
+  </p>
+
+  Status <br />
+  <% form_for :bug do |form| %>
+    <%= form.select(:status, Status.find(:all, :order => :id).map { |status| status.name }, :selected => "NEW") %>
+  <% end %>
+
+  Priority <br />
+  <% form_for :status do |form| %>
+    <%= form.select(:priority, [1, 2, 3, 4, 5]) %>
+  <% end %>
+
+ <!-- form for versions of the project to which the bug belongs. Order should be from last to first -->
+  
+  <%= f.submit 'Register to Picus' %>
+  </p>
+<% end %>
+

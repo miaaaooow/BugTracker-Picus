@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+  <head>
+    <title>Picus - helps You cope with all the bugs</title>
+    <%= stylesheet_link_tag "general" , :media => "all" %>
+  </head>
+  <body>
+    <div id="banner">
+      <%= image_tag("picus.png" ) %>
+    </div>
+
+    <%= link_to 'Projects', :controller => 'projects' %>&nbsp;
+    <% if session[:user_id] %>
+      <%= @user = Users.find_by_id(session[:user_id]) %>&nbsp;
+      <% if @user && @user.admin %>
+        <%= link_to 'Users', :controller => 'administration', :action => 'users' %>&nbsp;
+      <% end %> 
+    <%= link_to 'Logout', :controller => 'administration', :action => 'logout' %>&nbsp;
+    <% end %>
+    <a href="http://www.birdsinbulgaria.org/birds.php?l=en&semeystvo=39&vid=240&type=bird">
+      Learn more about Picus to love it
+    </a>
+    
+    <div id="main">
+      <% if flash[:notice] -%>
+        <div id="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end -%>
+      <div class="page">
+        <div class="inside">
+          <%= yield :layout %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+          

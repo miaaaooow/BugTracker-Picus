@@ -1,0 +1,31 @@
+<div class="page">
+<h1>Registration</h1>
+
+<% form_for(:user) do |f| %>
+  
+  <% f.error_messages %>
+  <p>  
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :user_password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label :your_preferred_name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit 'Register to Picus' %>
+  </p>
+<% end %>
+</div>
