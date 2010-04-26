@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20100425094924
+#
+# Table name: bugs
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)     not null
+#  description :text
+#  priority    :integer         default(1)
+#  status_id   :integer         not null
+#  user_id     :integer         not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Bug < ActiveRecord::Base
   belongs_to :version
   belongs_to :status

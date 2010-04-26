@@ -7,29 +7,13 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :versions
 
-  validates_presence_of :username, :password, :email
+  validates_presence_of :username, :password, :password_confirmation, :email
   validates_uniqueness_of :username, :email
 
   validate :email_correct 
   
   validates_confirmation_of :password
   validate :password_non_blank
-
-  def name
-    self.name
-  end
-
-  def name=(personal_name)
-    #self.username?
-    if personal_name.empty? && !self.username.empty? 
-      #This is the case in which a user didn't enter a specific name to be called.
-      self.name = self.username
-    elsif !personal_name.empty?
-      self.name = personal_name.downcase.gsub(/\b\w/) {|first| first.upcase}
-    else
-      return
-    end
-  end
 
   #virtual attribute
   def password
@@ -41,11 +25,23 @@ class User < ActiveRecord::Base
     return if pwd.empty?
     self.salt = create_salt
     self.encrypted_password = encrypt_password(pwd, salt)
+    self.name = choose_system_name
+  end
+  
+  def choose_system_name
+    #This is the case in which a user didn't enter a specific name to be called
+    if self.name.empty? && !self.username.empty? 
+      self.username 
+    elsif self.name.empty?
+      self.name.downcase.gsub(/\b\w/) {|first| first.upcase}
+    else
+      nil
+    end
   end
 
   def self.authenticate(username, pass) 
-    candidate = self.find_by_username(username)
-    if candidate && candicate.encrypted_password == encrypt_password(pass, candidate.salt)
+    candidate = User.find_by_username(username)
+    if candidate && candidate.encrypted_password == encrypt_password(pass, candidate.salt)
       candidate
     else
       nil
@@ -54,7 +50,7 @@ class User < ActiveRecord::Base
 
   def self.create_salt
     salt = ""
-    3.times { salt += rand.to_s }
+    3.times{salt += rand.to_s}
     salt
   end
 
@@ -68,7 +64,7 @@ private
   end
 
   def password_non_blank
-    errors.add(:password, "Empty password") if :encrypted_password.empty?
+    errors.add(:password, "Empty password") if self.encrypted_password.empty?
   end
 end
 

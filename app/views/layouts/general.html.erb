@@ -7,28 +7,34 @@
   </head>
   <body>
     <div id="banner">
-      <%= image_tag("picus.png" ) %>
+      <%= image_tag("picus2.png" ) %>
     </div>
+    <div class="page">
+      <%= link_to 'Projects', :controller => 'projects' %>&nbsp;
+      <% if session[:user] %>&nbsp;
+        <% if session[:admin] %>
+          <%= link_to 'Users', :controller => 'administration', :action => 'users' %>&nbsp;
+        <% end %> 
+        <%= link_to 'Logout', :controller => 'administration', :action => 'logout' %>&nbsp;
+      <% else %>
+        <%= link_to 'Login', :controller => 'administration', :action => 'login' %>&nbsp;
+        <%= link_to 'Register', :controller => '', :action => 'login' %>&nbsp;
+      <% end %>
 
-    <%= link_to 'Projects', :controller => 'projects' %>&nbsp;
-    <% if session[:user_id] %>
-      <%= @user = Users.find_by_id(session[:user_id]) %>&nbsp;
-      <% if @user && @user.admin %>
-        <%= link_to 'Users', :controller => 'administration', :action => 'users' %>&nbsp;
-      <% end %> 
-    <%= link_to 'Logout', :controller => 'administration', :action => 'logout' %>&nbsp;
-    <% end %>
-    <a href="http://www.birdsinbulgaria.org/birds.php?l=en&semeystvo=39&vid=240&type=bird">
-      Learn more about Picus to love it
-    </a>
+      <a href="http://www.birdsinbulgaria.org/birds.php?l=en&semeystvo=39&vid=240&type=bird" class="info">
+        About Picus
+      </a>
+
+      <span class = "info" id="hi"> 
+         Picus is happy to have You around, <%= session[:user] ? session[:user_name] : "Guest" %>!
+      </span>
     
-    <div id="main">
-      <% if flash[:notice] -%>
-        <div id="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end -%>
-      <div class="page">
+      <div id="main">
+        <% if flash[:notice] -%>
+          <div id="notice">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
         <div class="inside">
           <%= yield :layout %>
         </div>

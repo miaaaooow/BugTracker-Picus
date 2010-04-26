@@ -1,2 +1,22 @@
-<h1>Administration#login</h1>
-<p>Find me in app/views/administration/login.html.erb</p>
+<h1>Login</h1>
+
+<% if session[:user] %>
+  You are actually logged in. To register as another user you have to log out first.
+<% else %>
+<% form_for(:user) do |f| %>
+  
+  <% f.error_messages %>
+  <p>  
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :your_password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.submit 'Login to Picus', :method => 'post' %>
+  </p>
+<% end %>
+</div>
+<% end %>

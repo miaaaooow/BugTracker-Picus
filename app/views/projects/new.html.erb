@@ -1,17 +1,21 @@
 <h1>Create a New Project</h1>
 
 <% form_for(@project) do |f| %>
+  
+  <% f.error_messages %>
   <p>
-    <%= f.label :name  %>
+    <%= f.label :name  %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :description %>
+    <%= f.label :description %><br />
     <%= f.text_field :description %>
   </p>
+  
   <% f.error_messages %>
+  <br />
   <p>
-    <%= f.submit 'Create in Picus' %>
+    <%= f.submit 'Create in Picus', :method => 'post' %>
   </p>
 <% end %>
 

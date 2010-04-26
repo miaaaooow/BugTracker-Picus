@@ -1,15 +1,18 @@
 <h1>Projects held on Picus</h1>
-<% if @projects %>
+  <% if @projects.empty? %>
+    The Picus projects' depot is empty.
+  <% else %>
   <table class="list-projects">
     <tr>
       <td>Name</td>
       <td>Description</td>
-      <td>Created by</td>
+      <td>Creator</td>
       <td>Created on</td>
-      <td>Last Updated on</td>
-      <!-- CHECK IF ADMIN -->
-      <td>Edit</td>
-      <td>View Bugs</td>
+      <td>Last Updated</td>
+      <% if session[:admin] %>
+        <td>Edit</td>
+        <td>Delete</td>
+      <% end %>
     </tr>
     <% for project in @projects -%>
       <tr>
@@ -18,17 +21,16 @@
         <td><%=h User.find_by_id(project.user_id).name %></td>
         <td><%=h project.created_at %></td>
         <td><%=h project.updated_at %></td>
-        <!--CHECK IF ADMIN-->
+      <% if session[:admin] %>
         <td><%= link_to 'Edit', :controller => 'projects', :action => 'edit' %></td>
         <td><%= link_to 'View Bugs', :controller => 'bugs' %></td>
+      <% end %>
       </tr>
-    <% end %>
   </table>
-<% else %>
-  This instance of Picus has no registered projects.
 <% end %>
 
-<!--CHECK IF ADMIN-->
-<p>
-Create <%= link_to 'New Project', :controller => "projects", :action => "new"  %>
-</p>
+<% if session[:admin] %>
+  <p>
+    Create <%= link_to 'New Project', :controller => "projects", :action => "new"  %>
+  </p>
+<% end %>

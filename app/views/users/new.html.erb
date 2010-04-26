@@ -1,6 +1,8 @@
-<div class="page">
 <h1>Registration</h1>
 
+<% if session[:user_id] %>
+  You are actually logged in. To register as another user you have to log out.]
+<% else %>
 <% form_for(:user) do |f| %>
   
   <% f.error_messages %>
@@ -24,8 +26,13 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
+  <p>  
+    <%= f.label :about_you %><br />
+    <%= f.text_field :about, :rows => 3 %>
+  </p>
   <p>
     <%= f.submit 'Register to Picus' %>
   </p>
 <% end %>
 </div>
+<% end %>

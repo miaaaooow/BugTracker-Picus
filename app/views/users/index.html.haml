@@ -1,0 +1,17 @@
+%h1 
+  
+
+  
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  <p>
+  <% form_for :status do |form| %>
+    <%= form.select(:name, Status.find(:all).map { |status| status.name }) %>
+  <% end %>
+    <%= f.submit 'Register to Picus' %>
+  </p>
+<% end %>

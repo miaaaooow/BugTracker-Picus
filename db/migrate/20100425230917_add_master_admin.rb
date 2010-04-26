@@ -1,0 +1,17 @@
+class AddMasterAdmin < ActiveRecord::Migration
+  def self.up
+      salt =  User.create_salt
+      epass = User.encrypt_password("masterpassword", salt)
+      User.create({ :id => 15,
+                    :username => "master",
+                    :name => "Master Administrator",
+                    :email => "mateva.maria@gmail.com",
+                    :encrypted_password => epass,
+                    :salt => salt,
+                    :admin => true})
+  end
+
+  def self.down
+    User.destroy(['username = ?', "master"])
+  end
+end

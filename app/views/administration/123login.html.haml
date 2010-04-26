@@ -1,0 +1,15 @@
+%h1 Login
+
+= form_for(:user) do |f|
+
+  = f.error_messages
+  %p
+    = f.label :username
+    = f.text_field :username
+  %p
+    = f.label :user_password
+    = f.password_field :password
+  %p
+    = f.submit 'Login to Picus'
+
+
