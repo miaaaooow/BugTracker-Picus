@@ -2,7 +2,7 @@ body {
 	/***background-image:url('../images/background.jpg');***/
 }
 a:active {
-	font-size: x-large;}
+	font-size: x-large;
 	color: green;
 }
 a:link {text-decoration: none}
@@ -25,7 +25,7 @@ td {
 	border:1px solid green;
 }
 .info#hi {
-	margin-right: 5 px;
+	padding-right: 5px;
 	text-align: right;
   font-style: italic;
 }

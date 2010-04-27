@@ -1,0 +1,25 @@
+<h1>Project
+  <%=h @project.name %>
+</h1>
+  
+  <p>
+    Name:
+    <%=h @project.name %>
+  </p>
+  <br />
+  <p>
+    Description:
+    <%= @project.description %>
+  </p>  
+  <p>
+    Creator: 
+    <%= User.find_by_id(@project.user_id).name %>
+  </p>
+  <p>
+    Created on: 
+    <%=h @project.created_at %>
+  </p>
+
+  <%= link_to 'New Version', :controller => 'versions', :action => 'new' %>
+
+<%= link_to 'Back', projects_path %>

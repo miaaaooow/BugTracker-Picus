@@ -2,7 +2,7 @@ body {
 	/***background-image:url('../images/background.jpg');***/
 }
 a:active {
-	font-size: x-large;}
+	font-size: x-large;
 	color: green;
 }
 a:link {text-decoration: none}
@@ -38,5 +38,6 @@ td {
 }
 .inside {
 	padding-left:30px;
+	padding-right:30px;
 	padding-bottom:20px;
 }

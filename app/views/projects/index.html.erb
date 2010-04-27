@@ -9,6 +9,7 @@
       <td>Creator</td>
       <td>Created on</td>
       <td>Last Updated</td>
+      <td>View</td>
       <% if session[:admin] %>
         <td>Edit</td>
         <td>Delete</td>
@@ -21,9 +22,12 @@
         <td><%=h User.find_by_id(project.user_id).name %></td>
         <td><%=h project.created_at %></td>
         <td><%=h project.updated_at %></td>
+        <td><%= link_to 'Pick Bugs!', :controller => 'bugs' %></td> <!-- ADD PROJECT PARAMETER -->
       <% if session[:admin] %>
         <td><%= link_to 'Edit', :controller => 'projects', :action => 'edit' %></td>
-        <td><%= link_to 'View Bugs', :controller => 'bugs' %></td>
+        <td><%= link_to 'Delete', { :controller => 'projects', :action => 'destroy', :id => project.id },
+                                    :confirm => "You are going to delete the #{project.name} forever. Please confirm.",
+                                    :method => :delete %></td> 
       <% end %>
       </tr>
       <% end %>

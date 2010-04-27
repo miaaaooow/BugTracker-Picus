@@ -14,7 +14,7 @@
     </div>
     <div class="page">
       <%= link_to 'Projects', :controller => 'projects' %>&nbsp;
-      <% if session[:user] %>
+      <% if session[:user] %>&nbsp;
         <% if session[:admin] %>
           <%= link_to 'Users', :controller => 'administration', :action => 'users' %>&nbsp;
         <% end %> 
