@@ -4,6 +4,7 @@ class UserTest < ActiveSupport::TestCase
   test "password non empty" do
     ivan = User.new(:username => "i386", :email => "ivan@gmail.com", :password => "")
     assert !ivan.valid?
+    assert ivan.errors.on(:password).include? "Empty password"       
   end
 
   test "authentication" do

@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  test "missing properties" do
+    project = Project.new
+    assert !project.valid?
+    assert project.errors.invalid?(:name)
+    assert project.errors.invalid?(:user_id)
   end
+
 end

@@ -64,7 +64,7 @@ private
   end
 
   def password_non_blank
-    errors.add(:password, "Empty password") if self.encrypted_password.empty?
+    errors.add(:password, "Empty password") if self.encrypted_password.nil? or self.encrypted_password.empty?
   end
 end
 
