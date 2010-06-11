@@ -12582,3 +12582,171 @@ ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:
 Rendered rescues/_trace (147.3ms)
 Rendered rescues/_request_and_response (0.6ms)
 Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 15:59:48) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfdca5b0>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6: <% form_for(@user) do |f| %>
+7:   
+8:   <% f.error_messages %>
+9:   <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (61.4ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 16:01:32) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfe74e48>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6: <% form_for @user do |f| %>
+7:   
+8:   <% f.error_messages %>
+9:   <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (60.8ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 16:07:51) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfa1e790>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6: <% form_for @user do |f| %>
+7:   
+8:   <% f.error_messages %>
+9:   <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (62.0ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 16:17:14) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfaa1f28>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6:   <% form_for @user do |f| %>
+7:   
+8:     <% f.error_messages %>
+9:     <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (65.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 16:19:42) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfaffba0>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6:   <% form_for @user do |f| %>
+7:   
+8:     <% f.error_messages %>
+9:     <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (152.3ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-11 16:24:02) [POST]
+  Parameters: {"commit"=>"Register to Picus", "authenticity_token"=>"e1ciTX60+eJhsm4bO+QaIF5TBxOGIXBtepJqoZvBzS4=", "user"=>{"name"=>"noo", "password_confirmation"=>"foo", "username"=>"boo", "about"=>":)", "password"=>"foo", "email"=>"goo@gl.com"}}
+Rendering template within layouts/general
+Rendering users/new
+
+ActionView::TemplateError (undefined method `users_path' for #<ActionView::Base:0x7faacfc4f398>) on line #6 of app/views/users/new.html.erb:
+3: <% if session[:user_id] %>
+4:   You are actually logged in. To register as another user you have to log out.
+5: <% else %>
+6:   <% form_for @user do |f| %>
+7:   
+8:     <% f.error_messages %>
+9:     <p>  
+
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:208:in `form_for'
+    app/views/users/new.html.erb:6
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.23) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/users_controller.rb:14:in `new'
+    haml (2.2.23) lib/sass/plugin/rails.rb:20:in `process'
+
+Rendered rescues/_trace (150.7ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)

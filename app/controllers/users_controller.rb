@@ -25,14 +25,39 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash[:notice] = "#{@user.username} was successfully registered at Picus"
-        #send them a mail
-        format.html { redirect_to(:controller => 'projects', :action=>'index') } 
+        flash[:notice] = "#{@user.username} was successfully registered at Picus.<br/> Now You can login."
+        #TODO send them a mail
+        format.html { redirect_to(:controller => 'users', :action=>'index') } 
         format.xml { render :xml => @user, :location => @user }
-      else 
-        format.html{redirect_to(:action=>'new')}
-        format.xml{render :xml => @user.errors}
+      else
+        flash[:notice] = "Some wrong params! Try again!"
+        format.html { redirect_to(:action => 'new') }
+        format.xml { render :xml => @user.errors }
       end
     end
   end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @user.to_xml }
+    end
+  end
+
+  def update
+    @user.update_attributes(params[:user])
+    respond_to do |format|
+      format.html { redirect_to(:controller =>'users') }
+      format.xml { head :ok }
+    end
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to(:controller => 'users') }
+      format.xml { head :ok }
+    end
+  end
+
 end

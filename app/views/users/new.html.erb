@@ -3,37 +3,37 @@
 <% if session[:user_id] %>
   You are actually logged in. To register as another user you have to log out.
 <% else %>
-<% form_for(@user) do |f| %>
+  <% form_for @user do |f| %>
   
-  <% f.error_messages %>
-  <p>  
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :user_password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.label :your_preferred_name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>  
-    <%= f.label :about_you %><br />
-    <%= f.text_field :about, :rows => 3 %>
-  </p>
-  <% f.error_messages %>
-  <p>
-    <%= f.submit 'Register to Picus', :action => 'create', :method => :post  %>
-  </p>
-<% end %>
-</div>
+    <% f.error_messages %>
+    <p>  
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </p>
+    <p>
+      <%= f.label :user_password %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.label :your_preferred_name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>  
+      <%= f.label :about_you %><br />
+      <%= f.text_field :about, :rows => 3 %>    
+    </p>
+    <br />
+    <% f.error_messages %>
+    <p>
+      <%= f.submit 'Register to Picus', :action => 'create', :method => :post  %>
+    </p>
+  <% end %>
 <% end %>
