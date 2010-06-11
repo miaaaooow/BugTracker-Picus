@@ -14,14 +14,13 @@
     </div>
     <div class="page">
       <%= link_to 'Projects', :controller => 'projects' %>&nbsp;
+      <%= link_to 'Users', :controller => 'users', :action => 'index' %>&nbsp;
       <% if session[:user] %>
-        <% if session[:admin] %>
-          <%= link_to 'Users', :controller => 'administration', :action => 'users' %>&nbsp;
-        <% end %> 
+        <%= link_to 'Users', :controller => 'users', :action => 'index' %>&nbsp;
         <%= link_to 'Logout', :controller => 'administration', :action => 'logout' %>&nbsp;
       <% else %>
         <%= link_to 'Login', :controller => 'administration', :action => 'login' %>&nbsp;
-        <%= link_to 'Register', :controller => '', :action => 'login' %>&nbsp;
+        <%= link_to 'Register', :controller => 'users', :action => 'new' %>&nbsp;
       <% end %>
 
       <a href="http://www.birdsinbulgaria.org/birds.php?l=en&semeystvo=39&vid=240&type=bird" class="info">

@@ -10,6 +10,7 @@
       <td>Created on</td>
       <td>Last Updated</td>
       <td>View</td>
+      <td>Versions</td>
       <% if session[:admin] %>
         <td>Edit</td>
         <td>Delete</td>
@@ -17,12 +18,13 @@
     </tr>
     <% for project in @projects -%>
       <tr>
-        <td><%=h project.name %></td>
+        <td><%= link_to project.name, :controller => 'projects', :action => 'show', :id => project.id %></td>
         <td><%=h project.description %></td>
         <td><%=h User.find_by_id(project.user_id).name %></td>
         <td><%=h project.created_at %></td>
         <td><%=h project.updated_at %></td>
-        <td><%= link_to 'Pick Bugs!', :controller => 'bugs' %></td> <!-- ADD PROJECT PARAMETER -->
+        <td><%= link_to 'PICK bUgS!', :controller => 'bugs' %></td> <!-- ADD PROJECT PARAMETER -->
+        <td><%= link_to 'Versions', :controller => 'versions', :action => 'index' %></td>
       <% if session[:admin] %>
         <td><%= link_to 'Edit', :controller => 'projects', :action => 'edit' %></td>
         <td><%= link_to 'Delete', { :controller => 'projects', :action => 'destroy', :id => project.id },

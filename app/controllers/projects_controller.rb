@@ -28,12 +28,12 @@ class ProjectsController < ApplicationController
       @project = Project.new(params[:project])
 
       if @project.save
-        @version = Version.new({:name => first_version_name,
+        version = Version.new({:name => first_version_name,
                               :user_id => session[:user],
                               :project_id => @project.id })
 
         PicusNotificator.deliver_project_created(@project)
-        @version.save
+        version.save
         flash[:notice] = "Your project was saved to Picus"
         respond_to do |format|
           format.html { redirect_to(@project, :controller => 'projects', :action => 'show') }

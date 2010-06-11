@@ -1,34 +1,27 @@
-<h1>Projects held on Picus</h1>
-<% if @projects %>
+<h2>Users registered on Picus</h2>
   <table class="list-projects">
     <tr>
       <td>Name</td>
-      <td>Description</td>
-      <td>Created by</td>
-      <td>Created on</td>
-      <td>Last Updated on</td>
-      <!-- CHECK IF ADMIN -->
-      <td>Edit</td>
-      <td>View Bugs</td>
+      <td>Position</td>
+      <td>Registered on</td>
+      <td>View History</td>
+      <% if session[:admin] %>
+        <td>Edit</td>
+        <td>Delete</td>
+      <% end %>
     </tr>
-    <% for project in @projects -%>
+    <% for user in @users -%>
       <tr>
-        <td><%=h project.name %></td>
-        <td><%=h project.description %></td>
-        <td><%=h User.find_by_id(project.user_id).name %></td>
-        <td><%=h project.created_at %></td>
-        <td><%=h project.updated_at %></td>
-        <!--CHECK IF ADMIN-->
-        <td><%= link_to 'Edit', :controller => 'projects', :action => 'edit' %></td>
-        <td><%= link_to 'View Bugs', :controller => 'bugs' %></td>
+        <td><%=h user.name %></td>
+        <td><%=h user.admin? ? 'Administrator' : 'Normal User'%></td>
+        <td><%=h user.created_at %></td>
+        <td><%= link_to 'HIStory', :controller => 'records', :action => 'show' %></td> <!-- Send user id -->
+        <% if session[:admin] %>
+          <td><%= link_to 'Edit', :controller => 'users', :action => 'edit' %></td>
+          <td><%= link_to 'Delete', { :controller => 'users', :action => 'destroy', :id => user.id },
+                                    :confirm => "You are going to delete the user #{user.name} forever. Please confirm.",
+                                    :method => :delete %></td> 
+        <% end %>
       </tr>
-    <% end %>
+      <% end %>
   </table>
-<% else %>
-  This instance of Picus has no registered projects.
-<% end %>
-
-<!--CHECK IF ADMIN-->
-<p>
-Create <%= link_to 'New Project', :controller => "projects", :action => "new"  %>
-</p>
